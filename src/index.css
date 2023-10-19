@@ -1,0 +1,94 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400&display=swap');
+
+/* tailwind css added */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* dark mode and light mode theme */
+:root {
+    --primary-blue: rgb(0, 0, 255);
+    --secondary-blue: rgb(96, 96, 182);
+
+    --text-title-primary: #eb73c7;
+    --text-title-secondary: #7b5ef5;
+
+    --text-primary-light: black;
+    --text-primary-dark: white;
+
+    --text-secondary-light: rgb(70, 70, 70);
+    --text-secondary-dark: rgb(160, 160, 160);
+
+    --bg-primary-light: white;
+    --bg-primary-dark: black;
+
+    --bg-secondary-light: #4b4949;
+    --bg-secondary-dark: #d5d5d5;
+
+    --bg-primary: #f4f2fe;
+    --bg-secondary: #fef4fb;
+    --bg-third: #f1c50e;
+
+    --bg-navbar-light: rgb(104, 104, 255);
+    --bg-navbar-dark: rgb(29, 29, 58);
+}
+
+[data-theme='light'] {
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --bg-theme: var(--bg-primary-light);
+
+    --bg-secondary: var(--bg-secondary-light);
+    --bg-navbar: var(--bg-navbar-light);
+
+    --bg-navbar: #fff;
+}
+
+[data-theme='dark'] {
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --bg-theme: var(--bg-primary-dark);
+
+    --bg-secondary: var(--bg-secondary-dark);
+    --bg-navbar: var(--bg-navbar-dark);
+
+    --bg-navbar: red
+}
+
+body {
+    /* color: var(--text-primary) !important; */
+    font-family: 'IBM Plex Sans', sans-serif;
+    /* background-color: red; */
+}
+
+.font-londrina {
+    font-family: 'Londrina Solid', sans-serif;
+    /* font-family: 'Playfair Display', serif; */
+}
+
+* {
+    transition: background 0.3s ease-in-out;
+}
+.navbar li a:hover{
+    color: var(--text-title-secondary);
+}
+.navbar li .active{
+    color: var(--text-title-secondary);
+    border-bottom: 2px solid var(--text-title-secondary);
+}
+
+/* banner slide */
+.swiper-pagination-bullet{
+    width: 10px !important;
+    height: 10px !important;
+}
+.swiper-pagination-bullet-active{
+    background: var(--text-title-primary) !important;
+}
+.swiper-button-prev, .swiper-button-next{
+    color: var(--text-title-primary) !important;
+}
