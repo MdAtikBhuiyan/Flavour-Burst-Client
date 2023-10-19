@@ -2,7 +2,7 @@ import bellImg from '../../assets/images/notification-bell.png'
 
 const Subscribe = () => {
     return (
-        <div className="bg-title-secondary py-20 px-2 mt-24">
+        <div className="bg-title-secondary py-20 px-2 my-24">
 
 
             <img src={bellImg} className='h-40 text-center mx-auto mb-8' alt="" />
@@ -13,7 +13,7 @@ const Subscribe = () => {
 
                 <form>
                     <div className="relative w-[90%] md:w-[70%] lg:w-1/2 mx-auto mt-12">
-                        <input type="search" id="default-search" className="block w-full p-3 md:p-5 px-6 text-sm rounded-full focus:outline-none" placeholder="Enter Email" required />
+                        <input type="search" id="default-search" className="block w-full bg-white p-3 md:p-5 px-6 text-sm rounded-full focus:outline-none" placeholder="Enter Email" required />
                         <button type="submit" className="text-white absolute right-3 bottom-1 md:bottom-1.5 bg-title-primary focus:outline-none font-bold text-sm md:text-base rounded-full px-4 py-2 md:px-8 md:py-3">Subscribe</button>
                     </div>
                 </form>

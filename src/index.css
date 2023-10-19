@@ -59,10 +59,10 @@
     --bg-navbar: red
 }
 
-body {
+html {
     /* color: var(--text-primary) !important; */
     font-family: 'IBM Plex Sans', sans-serif;
-    /* background-color: red; */
+    /* background-color: var(--bg-theme) !important; */
 }
 
 .font-londrina {
