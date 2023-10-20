@@ -64,24 +64,31 @@ const product = [
 ]
 
 
-const AllProducts = ({products}) => {
+const AllProducts = ({ products }) => {
 
     console.log(products);
-    
+
     return (
-        <div className="my-16">
-            <div className="text-center space-y-4">
-                <h2 className="text-5xl font-bold text-title-secondary">Explore Our Products</h2>
-                <p className="text-text-secondary">Explore the brands that have earned a special place in the hearts of consumers worldwide, for a variety of compelling reasons.</p>
-            </div>
+        <>
+            {
+                products?.length ?
+                    <div className="my-16">
+                        < div className="text-center space-y-4" >
+                            <h2 className="text-5xl font-bold text-title-secondary">Explore Our Products</h2>
+                            <p className="text-text-secondary">Explore the brands that have earned a special place in the hearts of consumers worldwide, for a variety of compelling reasons.</p>
+                        </div >
 
-            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-14">
-                {
-                    products?.map(product => <ProductsCard key={product._id} product={product} />)
+                        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-14">
+                            {
+                                products?.map(product => <ProductsCard key={product._id} product={product} />)
+                            }
+                        </div>
+
+                    </div >
+                    :
+                <p className="text-center text-6xl">Coming</p>
                 }
-            </div>
-
-        </div>
+        </>
     );
 };
 

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import userImg from '../../assets/images/user.png'
 import Theme2 from "../../Theme2";
 import { FaCircleUser } from "react-icons/fa6";
@@ -10,6 +10,8 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
 
+    const userId = user?.uid;
+    console.log(user, userId);
     const navLinks = <>
 
         <li>
@@ -19,7 +21,7 @@ const Navbar = () => {
             <NavLink to='/addProduct'>Add Product</NavLink>
         </li>
         <li>
-            <NavLink to='/myCart'>My Cart</NavLink>
+            <NavLink to={`/myCart/${userId}`}>My Cart</NavLink>
         </li>
         <li>
             <NavLink to='/login'>Login</NavLink>
@@ -82,8 +84,8 @@ const Navbar = () => {
                                         <p>{user?.displayName}</p>
                                         <p className="text-sm mb-4">{user?.email}</p>
                                         <button
-                                        onClick={handleLogout} 
-                                        className="btn bg-title-secondary text-white rounded-full border-0 min-h-fit h-fit px-8 py-2 font-bold text-sm hover:bg-title-primary capitalize">Logout</button>
+                                            onClick={handleLogout}
+                                            className="btn bg-title-secondary text-white rounded-full border-0 min-h-fit h-fit px-8 py-2 font-bold text-sm hover:bg-title-primary capitalize">Logout</button>
                                     </li>
                                 </ul>
                             </div>

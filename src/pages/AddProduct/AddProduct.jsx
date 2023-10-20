@@ -1,8 +1,14 @@
 
 import Swal from 'sweetalert2';
 import addImg from '../../assets/images/addproduct.png'
+import { useLocation } from 'react-router-dom';
 
 const AddProduct = () => {
+
+    const { state } = useLocation();
+
+    const { image, title, price, rating, details, type, brandName } = state ? state : '';
+
 
     const handleAddProduct = (e) => {
 
@@ -18,30 +24,7 @@ const AddProduct = () => {
         const rating = form.rating.value;
 
         const newProduct = { image, title, brandName, type, price, details, rating };
-        console.log(newProduct);
-
-        // //send data to server site
-        // fetch('http://localhost:5007/products', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(newProduct)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //         if (data.insertedId) {
-        //             Swal.fire({
-        //                 title: "Added Successfully",
-        //                 text: "Do you want to continue",
-        //                 icon: "success",
-        //                 confirmButtonText: "Okay",
-        //             });
-        //         }
-        //     })
-
-        // send to server and add to the database
+        // console.log(newProduct);
 
         fetch('http://localhost:5000/products', {
             method: "POST",
@@ -75,10 +58,30 @@ const AddProduct = () => {
                 })
             })
 
-            // form clear
-            // form.reset()
+        // form clear
+        // form.reset()
     };
+    console.log(state);
 
+
+    // update product
+    const handleUpdateProduct = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const image = form.image.value;
+        const title = form.productTitle.value;
+        const brandName = form.brandName.value;
+        const type = form.type.value;
+        const price = form.price.value;
+        const details = form.details.value;
+        const rating = form.rating.value;
+
+        const newProduct = { image, title, brandName, type, price, details, rating };
+        // console.log(newProduct);
+
+        
+
+    }
 
     return (
         <div className="w-[90%] mx-auto mt-14">
@@ -88,21 +91,24 @@ const AddProduct = () => {
             </div> */}
 
             <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-2 items-center justify-center">
-                <div className="justify-self-center">
+                <div className={`justify-self-center ${state && 'order-2'}`}>
                     <img src={addImg} alt="" />
                 </div>
-                <section className="p-4 md:py-20 md:px-16 shadow-md bg-title-primary">
+                <section className={`p-4 md:py-20 md:px-16 shadow-md ${state ? 'bg-title-secondary' : 'bg-title-primary'}`}>
                     <h1 className="text-center text-3xl md:text-5xl font-semibold text-white font-londrina mb-14">
-                        Add New Product
+                        {
+                            state ? "Update Product" : 'Add New Product'
+                        }
                     </h1>
 
-                    <form onSubmit={handleAddProduct} className="">
+                    <form onSubmit={state ? handleUpdateProduct : handleAddProduct} className="">
                         <div>
                             <label className="text-white text-base font-bold">
                                 Image URL:
                             </label>
                             <input
                                 name="image"
+                                defaultValue={image}
                                 required
                                 type="text"
                                 placeholder="Image URl"
@@ -117,6 +123,7 @@ const AddProduct = () => {
                                 <input
                                     name="productTitle"
                                     type="text"
+                                    defaultValue={title}
                                     required
                                     placeholder="Product Name"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
@@ -130,6 +137,7 @@ const AddProduct = () => {
                                     name="brandName"
                                     type="text"
                                     required
+                                    defaultValue={brandName}
                                     placeholder="Brand Name"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
                                 />
@@ -142,6 +150,7 @@ const AddProduct = () => {
                                     name="type"
                                     type="text"
                                     required
+                                    defaultValue={type}
                                     placeholder="Product Type"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
                                 />
@@ -154,6 +163,7 @@ const AddProduct = () => {
                                     name="price"
                                     type="number"
                                     required
+                                    defaultValue={price}
                                     placeholder="Price"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
                                 />
@@ -166,6 +176,7 @@ const AddProduct = () => {
                                     name="details"
                                     type="text"
                                     required
+                                    defaultValue={details}
                                     placeholder="Details"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
                                 />
@@ -176,7 +187,9 @@ const AddProduct = () => {
                                 </label>
                                 <input
                                     name="rating"
-                                    type="text" required
+                                    type="text"
+                                    required
+                                    defaultValue={rating}
                                     placeholder="rating"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
                                 />
@@ -184,7 +197,7 @@ const AddProduct = () => {
                         </div>
 
                         <div className="w-full mt-12">
-                            <button type="submit" className="btn w-full bg-title-secondary text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base hover:bg-[#6e53e6]">Get Started</button>
+                            <button type="submit" className={`btn w-full text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base ${state ? 'bg-title-primary hover:bg-[#ff6ed3]' : 'bg-title-secondary hover:bg-[#6e53e6]'}`}>Get Started</button>
                         </div>
                     </form>
                 </section>
