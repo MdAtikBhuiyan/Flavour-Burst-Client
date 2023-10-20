@@ -1,7 +1,85 @@
-import { Link } from "react-router-dom";
+
+import Swal from 'sweetalert2';
 import addImg from '../../assets/images/addproduct.png'
 
 const AddProduct = () => {
+
+    const handleAddProduct = (e) => {
+
+        e.preventDefault();
+
+        const form = e.target;
+        const image = form.image.value;
+        const title = form.productTitle.value;
+        const brandName = form.brandName.value;
+        const type = form.type.value;
+        const price = form.price.value;
+        const details = form.details.value;
+        const rating = form.rating.value;
+
+        const newProduct = { image, title, brandName, type, price, details, rating };
+        console.log(newProduct);
+
+        // //send data to server site
+        // fetch('http://localhost:5007/products', {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(newProduct)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //         if (data.insertedId) {
+        //             Swal.fire({
+        //                 title: "Added Successfully",
+        //                 text: "Do you want to continue",
+        //                 icon: "success",
+        //                 confirmButtonText: "Okay",
+        //             });
+        //         }
+        //     })
+
+        // send to server and add to the database
+
+        fetch('http://localhost:5000/products', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Product added successfully',
+                        text: "Do you want to continue",
+                        confirmButtonText: "Yes"
+                        // showConfirmButton: false,
+                        // timer: 2000
+                    })
+                }
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Opps... Failed !!',
+                    text: `${err.message}`,
+                    confirmButtonText: "Continue"
+                    // showConfirmButton: false,
+                    // timer: 2000
+                })
+            })
+
+            // form clear
+            form.reset()
+    };
+
+
     return (
         <div className="w-[90%] mx-auto mt-14">
             {/* <div className="text-center space-y-4">
@@ -18,7 +96,7 @@ const AddProduct = () => {
                         Add New Product
                     </h1>
 
-                    <form onSubmit={''} className="">
+                    <form onSubmit={handleAddProduct} className="">
                         <div>
                             <label className="text-white text-base font-bold">
                                 Image URL:
@@ -34,10 +112,10 @@ const AddProduct = () => {
                         <div className="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2">
                             <div>
                                 <label className="text-white text-base font-bold">
-                                    Name:
+                                    Product Title:
                                 </label>
                                 <input
-                                    name="name"
+                                    name="productTitle"
                                     type="text"
                                     required
                                     placeholder="Product Name"
