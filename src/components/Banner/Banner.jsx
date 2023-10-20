@@ -14,9 +14,8 @@ import BannerSlide from "./BannerSlide";
 
 
 const Banner = ({ banners }) => {
-    // console.log(bannerInfo);
     const [currentBanners, setCurrentBanners] = useState(banners)
-
+    // console.log('currentt', currentBanners);
     return (
         <div>
             <Swiper
@@ -45,8 +44,8 @@ const Banner = ({ banners }) => {
                 <SwiperSlide>Slide 8</SwiperSlide>
                 <SwiperSlide>Slide 9</SwiperSlide> */}
                 {
-                    currentBanners.map(banner => (
-                        <SwiperSlide key={banner.id}>
+                    currentBanners?.map((banner, idx) => (
+                        <SwiperSlide key={idx}>
                             <BannerSlide bannerDetails={banner} />
                         </SwiperSlide>
                     ))

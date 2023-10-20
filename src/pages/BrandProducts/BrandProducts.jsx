@@ -68,14 +68,16 @@ const products = [
 
 
 const BrandProducts = ({ params }) => {
+    // console.log(params());
     const { id } = params()
-    const location = useLocation();
-    console.log(location, id);
+    const { state } = useLocation();
+    // console.log(state);
+    // console.log(id);
 
 
     return (
         <div>
-            <Banner banners={products} />
+            <Banner banners={state?.banner} />
             <AllProducts brand={'name'} />
         </div>
     );
