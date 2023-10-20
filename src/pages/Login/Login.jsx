@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState()
+    const { signIn, googleSignIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    const location = useLocation()
 
     const handleLogin = (e) => {
 
@@ -13,22 +19,51 @@ const Login = () => {
         const form = e.target;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        
+
+        // clear error message 
+        setErrorMessage('')
+
+        // login at firebase
+        if (email && password) {
+            signIn(email, password)
+                .then(res => {
+                    // console.log(res.user);
+                    toast.success('Login Successful');
+                    navigate(location?.state ? location.state : '/')
+                })
+                .catch(err => {
+                    // console.log(err);
+                    setErrorMessage(`${err.message}`)
+                })
+
+            // form field clear
+            form.reset()
+        }
 
     }
 
     const handleGoogleLogin = () => {
-
+        setErrorMessage('')
+        googleSignIn()
+            .then(res => {
+                // console.log(res.user);
+                toast.success('Login Successful');
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(err => {
+                // console.log(err);
+                setErrorMessage(err.message)
+            })
     }
 
     return (
         <div>
-            <section className="py-20">
+            <section className="py-16">
                 <div className="container mx-auto">
                     <div className="-mx-4 flex flex-wrap">
                         <div className="w-full px-4">
                             <div
-                                className="relative mx-auto max-w-[525px] overflow-hidden bg-title-secondary py-16 px-10 text-center sm:px-12 md:px-[60px]"
+                                className="relative mx-auto max-w-[600px] overflow-hidden bg-title-secondary py-16 px-14 text-center sm:px-12 md:px-[60px]"
                             >
                                 <div className="mb-10 text-center md:mb-16">
                                     <h2 className="text-white text-3xl font-bold font-londrina">Sign In Your Account</h2>
@@ -42,6 +77,7 @@ const Login = () => {
                                             name="email"
                                             placeholder="Email"
                                             className="border-[#E9EDF4] w-full  border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#8c8c8d] outline-none focus:border-title-primary focus-visible:shadow-none"
+                                            required
                                         />
                                     </div>
                                     <div className="mb-6">
@@ -50,6 +86,7 @@ const Login = () => {
                                             name="password"
                                             placeholder="Password"
                                             className="border-[#E9EDF4] w-full  border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#8c8c8d] outline-none focus:border-title-primary focus-visible:shadow-none"
+                                            required
                                         />
                                     </div>
                                     <div className="mb-6">
@@ -61,9 +98,7 @@ const Login = () => {
                                     </div>
                                 </form>
 
-                                {/* <button class="btn bg-title-primary text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base hover:bg-title-secondary">Get Started</button> */}
-
-                                <p className="text-red-500 text-base text-center italic mb-6">{errorMessage}</p>
+                                <p className="text-black font-bold text-lg text-center italic mb-6">{errorMessage}</p>
 
                                 <p className="mb-4 text-base text-white">Connect With</p>
 

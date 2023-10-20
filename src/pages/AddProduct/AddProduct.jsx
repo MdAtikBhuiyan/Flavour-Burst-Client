@@ -9,12 +9,12 @@ const AddProduct = () => {
                 <p className="text-text-secondary">Explore the brands that have earned a special place in the hearts of consumers worldwide, for a variety of compelling reasons.</p>
             </div> */}
 
-            <div className="grid grid-cols-2 gap-2 items-center justify-center">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-2 items-center justify-center">
                 <div className="justify-self-center">
                     <img src={addImg} alt="" />
                 </div>
-                <section className="p-4 md:py-20 md:px-16  shadow-md bg-title-primary">
-                    <h1 className="text-center text-5xl font-semibold text-white font-londrina mb-14">
+                <section className="p-4 md:py-20 md:px-16 shadow-md bg-title-primary">
+                    <h1 className="text-center text-3xl md:text-5xl font-semibold text-white font-londrina mb-14">
                         Add New Product
                     </h1>
 

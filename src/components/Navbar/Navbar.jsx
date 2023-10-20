@@ -2,8 +2,13 @@ import { NavLink } from "react-router-dom";
 import userImg from '../../assets/images/user.png'
 import Theme2 from "../../Theme2";
 import { FaCircleUser } from "react-icons/fa6";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
 
     const navLinks = <>
 
@@ -22,6 +27,16 @@ const Navbar = () => {
 
     </>
 
+    const handleLogout = () => {
+        logOut()
+            .then(() => {
+                toast.success("Logout Successfull")
+            })
+            .catch(err => {
+                toast.error(err.message)
+            })
+    }
+
     return (
         <div className="navbar bg-white p-0">
 
@@ -39,11 +54,11 @@ const Navbar = () => {
 
             <div className="navbar-end">
 
-                <div className="dropdown">
+                <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex={0} className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold text-text-primary">
+                    <ul tabIndex={0} className="dropdown-content mt-3 z-20 p-2 pl-6 py-4 space-y-4 shadow bg-base-100 rounded-box w-52 font-bold text-text-primary">
                         {
                             navLinks
                         }
@@ -51,29 +66,40 @@ const Navbar = () => {
                 </div>
 
                 <div className="flex gap-4">
-                    <button className="btn bg-transparent hover:bg-transparent border-0 p-0">
-                        {/* <img src={userImg} className="w-12" alt="" /> */}
-                        <FaCircleUser className="text-title-primary text-3xl" />
-                    </button>
+
+
+
+                    {
+                        user ? <>
+                            <div className="dropdown dropdown-hover dropdown-end">
+                                <label tabIndex={1} className="m-1">
+                                    <button className="btn bg-transparent hover:bg-transparent border-0 p-0">
+                                        <img src={user?.photoURL} className="w-10 h-10 mx-auto rounded-full" alt="" />
+                                    </button>
+                                </label>
+                                <ul tabIndex={1} className="dropdown-content z-20 p-2 shadow bg-white text-black rounded-box w-52">
+                                    <li className="text-center text-xl font-bold my-3">
+                                        <p>{user?.displayName}</p>
+                                        <p className="text-sm mb-4">{user?.email}</p>
+                                        <button
+                                        onClick={handleLogout} 
+                                        className="btn bg-title-secondary text-white rounded-full border-0 min-h-fit h-fit px-8 py-2 font-bold text-sm hover:bg-title-primary capitalize">Logout</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </>
+                            :
+                            <NavLink to='/login'>
+                                <button className="btn bg-transparent hover:bg-transparent border-0 p-0">
+                                    <FaCircleUser className="text-title-primary text-3xl" />
+                                </button>
+                            </NavLink>
+                    }
+
                     <Theme2 />
+
                 </div>
 
-                {/* <div className="drawer drawer-end">
-                    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content">
-                        
-                        <label htmlFor="my-drawer-4" className="drawer-button btn">Open drawer</label>
-                        <p htmlFor="my-drawer-4" className="drawer-button btn">_==_</p>
-                    </div>
-                    <div className="drawer-side">
-                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-1/2 lg:w-80 min-h-full bg-base-200 text-base-content">
-                           
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
-                        </ul>
-                    </div>
-                </div> */}
 
             </div>
         </div>

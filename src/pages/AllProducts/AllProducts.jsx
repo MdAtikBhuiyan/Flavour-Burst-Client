@@ -73,7 +73,7 @@ const AllProducts = ({brand}) => {
                 <p className="text-text-secondary">Explore the brands that have earned a special place in the hearts of consumers worldwide, for a variety of compelling reasons.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-14">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-14">
                 {
                     products.map(product => <ProductsCard key={product.id} product={product} brandName={brand} />)
                 }
