@@ -76,7 +76,7 @@ const AddProduct = () => {
             })
 
             // form clear
-            form.reset()
+            // form.reset()
     };
 
 
@@ -176,8 +176,7 @@ const AddProduct = () => {
                                 </label>
                                 <input
                                     name="rating"
-                                    type="number" required
-
+                                    type="text" required
                                     placeholder="rating"
                                     className="block w-full px-4 py-2 mt-2  border focus:border-title-primary bg-slate-100 text-black outline-0"
                                 />

@@ -93,7 +93,7 @@ const brands = [
     },
     {
         id: 6,
-        title: 'McDonalds',
+        title: 'McDonald',
         image: brand6,
         banner: [
             {
@@ -118,7 +118,7 @@ const Brands = () => {
     const navigate = useNavigate()
     const handleBrand = (brand) => {
         // console.log(brand);
-        const name = brand.title.replace(/\s+/g, '-')
+        const name = brand.title.replace(/\s+/g, '-').toLowerCase();
         navigate(`/brandProducts/${name}`, { state: brand })
     }
 
@@ -132,7 +132,7 @@ const Brands = () => {
 
             <div className='flex flex-wrap gap-4 md:gap-8 justify-center items-center my-12'>
                 {
-                    brands.map(brand => (
+                    brands?.map(brand => (
                         <div
                             onClick={() => handleBrand(brand)}
                             className='relative group shadow-lg bg-white h-56 p-3 md:p-6 rounded-xl flex flex-col justify-center items-center my-auto transition-all active:scale-105' key={brand.id}>

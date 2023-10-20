@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import AllProducts from "../AllProducts/AllProducts";
 import Banner from "../../components/Banner/Banner";
 
@@ -69,16 +69,27 @@ const products = [
 
 const BrandProducts = ({ params }) => {
     // console.log(params());
-    const { id } = params()
+    const { brandName } = params()
     const { state } = useLocation();
     // console.log(state);
-    // console.log(id);
+    // console.log(brandName);
+
+    const products = useLoaderData()
+    console.log(products);
 
 
     return (
         <div>
             <Banner banners={state?.banner} />
-            <AllProducts brand={'name'} />
+
+            {
+                products.length ?
+                    <AllProducts products={products} />
+                    :
+                    <div className="text-center text-3xl font-bold mt-8">
+                        Coming Soon ....
+                    </div>
+            }
         </div>
     );
 };

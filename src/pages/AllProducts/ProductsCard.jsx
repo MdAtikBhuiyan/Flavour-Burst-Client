@@ -1,23 +1,24 @@
 import { Link } from "react-router-dom";
 
-const ProductsCard = ({ product, brandName }) => {
+const ProductsCard = ({ product }) => {
     // console.log(product, brandName);
-    const { image, name, price, rating, description, type, brand } = product;
+    const { _id, image, title, price, rating, details, type, brandName } = product;
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-                <img src='https://i.ibb.co/4ppzKMr/coffe5.png' alt="Shoes" className="rounded-xl" />
+                <img src={image} alt="Shoes" className="rounded-xl max-h-40" />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="text-title-primary text-2xl md:text-3xl font-bold">{name}</h2>
-                <p>{description}</p>
-                <p className="font-bold text-2xl md:text-3xl text-title-secondary my-4">${price}</p>
-                <div className="flex justify-between w-full">
+                <h2 className="text-title-primary text-2xl md:text-3xl font-bold font-londrina">{title}</h2>
+                <p>{details.slice(0,100)}...</p>
+                <div className="flex justify-between text-sm w-full">
                     <p>Rating: {rating}</p>
-                    <p>{type}</p>
+                    <p>Type: {type}</p>
                 </div>
-                <div className="card-actions mt-8">
-                    <Link to={`/brandProducts/${brandName}/${type}`}>
+                <p className="font-extrabold text-2xl md:text-5xl text-title-secondary mt-4">${price}</p>
+               
+                <div className="card-actions mt-6">
+                    <Link to={`/brandProducts/${brandName}/${_id}`}>
                         <button className="btn bg-title-primary text-white rounded-full border-0 h-auto px-8 py-1 font-bold text-base hover:bg-title-secondary capitalize">Show Details</button>
                     </Link>
                 </div>

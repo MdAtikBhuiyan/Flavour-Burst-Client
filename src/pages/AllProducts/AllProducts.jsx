@@ -1,6 +1,6 @@
 import ProductsCard from "./ProductsCard";
 
-const products = [
+const product = [
     {
         "id": 1,
         "image": "coca_cola_classic.jpg",
@@ -64,7 +64,9 @@ const products = [
 ]
 
 
-const AllProducts = ({brand}) => {
+const AllProducts = ({products}) => {
+
+    console.log(products);
     
     return (
         <div className="my-16">
@@ -75,7 +77,7 @@ const AllProducts = ({brand}) => {
 
             <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-14">
                 {
-                    products.map(product => <ProductsCard key={product.id} product={product} brandName={brand} />)
+                    products?.map(product => <ProductsCard key={product._id} product={product} />)
                 }
             </div>
 
