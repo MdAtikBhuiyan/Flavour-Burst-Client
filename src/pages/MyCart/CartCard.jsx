@@ -19,7 +19,7 @@ const CartCard = ({ product, cartProducts, setCartProducts }) => {
 
             if (result.isConfirmed) {
 
-                fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products/${_id}`, {
+                fetch(`https://asn-flavour-brust-10-server-aqpa4m010.vercel.app/products/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

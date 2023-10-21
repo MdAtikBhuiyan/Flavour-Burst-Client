@@ -26,7 +26,7 @@ const Service = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-wrap gap-10 justify-center'>
+                    <div className='w-[90%] mx-auto flex flex-wrap gap-10 justify-center'>
 
                         <div className="card w-96 bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">

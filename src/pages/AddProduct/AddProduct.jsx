@@ -34,7 +34,7 @@ const AddProduct = () => {
         const newProduct = { image, title, brandName, type, price, details, rating };
         // console.log(newProduct);
 
-        fetch('https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products', {
+        fetch('https://asn-flavour-brust-10-server-aqpa4m010.vercel.app/products', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -86,7 +86,7 @@ const AddProduct = () => {
 
         const newProduct = { image, title, brandName, type, price, details, rating };
         // console.log(newProduct);
-        fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products/${_id}`, {
+        fetch(`https://asn-flavour-brust-10-server-aqpa4m010.vercel.app/products/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -132,8 +132,8 @@ const AddProduct = () => {
                 <div className={`justify-self-center ${updateProduct && 'order-2'}`}>
                     <img src={addImg} alt="" />
                 </div>
-                <section className={`p-4 md:py-20 md:px-16 shadow-md ${updateProduct ? 'bg-title-secondary' : 'bg-title-primary'}`}>
-                    <h1 className="text-center text-3xl md:text-5xl font-semibold text-white font-londrina mb-14">
+                <section className={`p-4 py-8 md:py-20 md:px-16 shadow-md ${updateProduct ? 'bg-title-secondary' : 'bg-title-primary'}`}>
+                    <h1 className="text-center text-3xl md:text-5xl font-semibold text-white font-londrina mb-8 md:mb-14">
                         {
                             updateProduct ? "Update Product" : 'Add New Product'
                         }

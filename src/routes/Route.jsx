@@ -54,21 +54,21 @@ const router = createBrowserRouter([
             {
                 path: '/brandProducts/:brandName',
                 element: <BrandProducts params={useParams} />,
-                loader: ({ params }) => fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products/${params.brandName}`)
+                loader: ({ params }) => fetch(`https://asn-flavour-brust-10-server-aqpa4m010.vercel.app/products/${params?.brandName}`)
             },
             {
                 path: '/brandProducts/:brand/:id',
                 element: <PrivateRoute>
                     <ProductDetails />
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products/${params.brand}/${params.id}`)
+                loader: ({ params }) => fetch(`https://asn-flavour-brust-10-server-aqpa4m010.vercel.app/products/${params?.brand}/${params?.id}`)
             },
             {
                 path: '/myCart/:user',
                 element: <PrivateRoute>
                     <MyCart />
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/addCart/${params?.user && params.user}`)
+                loader: ({ params }) => fetch(`https://asn-flavour-brust-10-server-aqpa4m010.vercel.app/addCart/${params?.user}`)
             }
         ]
     },

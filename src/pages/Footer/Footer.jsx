@@ -7,13 +7,13 @@ const Footer = () => {
         <li className="link link-hover">
             <NavLink to='/'>Home</NavLink>
         </li>
-        <li className="link link-hover">
-            <NavLink to='/addProduct'>Add Product</NavLink>
+        <li>
+            <NavLink to='/service'>Service</NavLink>
         </li>
-        <li className="link link-hover">
-            <NavLink to='/myCart'>My Cart</NavLink>
+        <li>
+            <NavLink to='/subscribe'>Subscribe</NavLink>
         </li>
-        <li className="link link-hover">
+        <li>
             <NavLink to='/login'>Login</NavLink>
         </li>
 

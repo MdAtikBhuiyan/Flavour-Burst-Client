@@ -28,7 +28,7 @@ const Navbar = () => {
             </>
 
         }
-        
+
         <li>
             <NavLink to='/service'>Service</NavLink>
         </li>
@@ -58,7 +58,9 @@ const Navbar = () => {
                 <div className="navbar justify-between items-center">
 
                     <div className="navbar-start">
-                        <p className="text-2xl lg:text-4xl font-londrina text-title-primary">Flavour Burst</p>
+                        <NavLink to='/'>
+                            <p className="text-2xl lg:text-4xl font-londrina text-title-primary">Flavour Burst</p>
+                        </NavLink>
                     </div>
 
                     <div className="navbar-center hidden lg:flex">
