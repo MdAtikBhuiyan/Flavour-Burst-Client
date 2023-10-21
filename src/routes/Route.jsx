@@ -7,13 +7,14 @@ import MyCart from "../pages/MyCart/MyCart";
 import ProductDetails from "../pages/AllProducts/ProductDetails";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
-        errorElement: '',
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
             {
                 path: '/myCart/:user',
                 element: <MyCart />,
-                loader: ({params}) => fetch(`http://localhost:5000/addCart/${params?.user}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/addCart/${params?.user}`)
             }
         ]
     },
