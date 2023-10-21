@@ -8,11 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Root = () => {
     return (
-        <div className="overflow-hidden">
+        <div>
             {/* <Theme />*/}
             <Navbar />
-            <Outlet />
-            {/* <Footer /> */}
+            <div className="overflow-hidden">
+                <Outlet />
+            </div>
+            <Footer />
 
 
             {/* toastify container */}

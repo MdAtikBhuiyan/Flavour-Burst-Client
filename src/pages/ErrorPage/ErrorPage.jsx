@@ -23,7 +23,7 @@ const ErrorPage = () => {
                 <p className="text-lg text-red-500 italic">{error.data}</p>
                 <div>
                     <Link to='/'>
-                        <button className="btn my-4 text-white bg-title-secondary rounded-full font-bold px-8 py-4 hover:bg-title-primary]">Go to home</button>
+                        <button className="btn my-4 text-white bg-title-secondary rounded-full font-bold px-8 py-4 hover:bg-title-primary">Go to home</button>
                     </Link>
                 </div>
 

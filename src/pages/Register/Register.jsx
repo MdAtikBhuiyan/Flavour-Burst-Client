@@ -90,7 +90,7 @@ const Register = () => {
                                 className="relative mx-auto max-w-[600px] overflow-hidden bg-title-secondary py-16 px-14 text-center sm:px-12 md:px-[60px]"
                             >
                                 <div className="mb-10 text-center md:mb-16">
-                                    <h2 className="text-white text-3xl font-bold font-londrina">Create an Account</h2>
+                                    <h2 className="text-white text-2xl md:text-3xl font-bold font-londrina">Create an Account</h2>
                                 </div>
                                 <form onSubmit={handleRegiter}>
                                     <div className="mb-6">

@@ -21,7 +21,7 @@ const Footer = () => {
 
     return (
         <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded">
-            <ul className="grid grid-flow-col gap-8 text-lg">
+            <ul className="flex flex-wrap justify-center items-center gap-8 text-lg">
 
                 {/* <a className="link link-hover">About us</a>
                 <a className="link link-hover">Contact</a>

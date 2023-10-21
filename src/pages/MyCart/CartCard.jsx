@@ -19,7 +19,7 @@ const CartCard = ({ product, cartProducts, setCartProducts }) => {
 
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/products/${_id}`, {
+                fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -32,7 +32,7 @@ const CartCard = ({ product, cartProducts, setCartProducts }) => {
                                 'success'
                             )
 
-                            const remainingProduct = cartProducts.filter(item => item._id != _id)
+                            const remainingProduct = cartProducts?.filter(item => item._id != _id)
                             setCartProducts(remainingProduct)
                             console.log(remainingProduct);
                         }

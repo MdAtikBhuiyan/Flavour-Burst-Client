@@ -19,7 +19,7 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
 
         const addProduct = { ...restInfo, uid: user?.uid }
-        fetch('http://localhost:5000/addCart', {
+        fetch('https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/addCart', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -6,6 +6,7 @@ import Banner from '../../components/Banner/Banner';
 import AllProducts from '../AllProducts/AllProducts';
 import Brands from '../Brands/Brands';
 import Footer from '../Footer/Footer';
+import Service from '../Service/Service';
 import Subscribe from '../Subscribe/Subscribe';
 
 const banners = [
@@ -22,7 +23,7 @@ const Home = () => {
 
             <div className='w-[90%] mx-auto'>
                 <Brands />
-                <AllProducts />
+                <Service />
                 <Subscribe />
 
             </div>

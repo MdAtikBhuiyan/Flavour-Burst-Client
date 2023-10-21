@@ -11,7 +11,7 @@ const BannerSlide = ({ bannerDetails }) => {
                     <h2 className="text-2xl md:text-5xl xl:text-7xl mb-8 font-bold text-white font-londrina">{title}</h2>
                     <p className="md:w-4/5 mx-auto text-white mb-5">We are dedicated to sourcing the finest ingredients, promoting sustainable practices, and creating flavors that bring people together. Our mission is to enhance everyday life through the joy of food and drink.</p>
                     <Link to='/'>
-                        <button className="btn bg-title-primary text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base hover:bg-title-secondary">Get Started</button>
+                        <button className="btn bg-title-primary text-white rounded-full border-0 h-fit min-h-fit px-6 py-2 md:px-8 md:py-3 font-bold text-base hover:bg-title-secondary">Get Started</button>
                     </Link>
                 </div>
 

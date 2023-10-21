@@ -34,7 +34,7 @@ const AddProduct = () => {
         const newProduct = { image, title, brandName, type, price, details, rating };
         // console.log(newProduct);
 
-        fetch('http://localhost:5000/products', {
+        fetch('https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -67,7 +67,7 @@ const AddProduct = () => {
             })
 
         // form clear
-        // form.reset()
+        form.reset()
     };
     console.log(updateProduct);
 
@@ -86,7 +86,7 @@ const AddProduct = () => {
 
         const newProduct = { image, title, brandName, type, price, details, rating };
         // console.log(newProduct);
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://asn-flavour-brust-10-server-mpkg126i6.vercel.app/products/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -122,7 +122,7 @@ const AddProduct = () => {
     }
 
     return (
-        <div className="w-[90%] mx-auto mt-14">
+        <div className="w-[90%] mx-auto my-16">
             {/* <div className="text-center space-y-4">
                 <h2 className="text-5xl font-bold text-title-secondary">Add Product</h2>
                 <p className="text-text-secondary">Explore the brands that have earned a special place in the hearts of consumers worldwide, for a variety of compelling reasons.</p>
@@ -237,7 +237,7 @@ const AddProduct = () => {
                         <div className="w-full mt-12">
                             <button
                                 type="submit"
-                                className={`btn w-full text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base ${updateProduct ? 'bg-title-primary hover:bg-[#ff6ed3]' : 'bg-title-secondary hover:bg-[#6e53e6]'}`}>
+                                className={`btn w-full text-white rounded-full border-0 h-fit min-h-fit px-6 py-2 md:px-8 md:py-3 font-bold text-sm md:text-base ${updateProduct ? 'bg-title-primary hover:bg-[#ff6ed3]' : 'bg-title-secondary hover:bg-[#6e53e6]'}`}>
                                 {updateProduct ?
                                     "Update Product"
                                     :
