@@ -66,7 +66,7 @@ const product = [
 
 const AllProducts = ({ products }) => {
 
-    console.log(products);
+    // console.log(products);
 
     return (
         <>
@@ -86,8 +86,8 @@ const AllProducts = ({ products }) => {
 
                     </div >
                     :
-                <p className="text-center text-6xl">Coming</p>
-                }
+                    <p className="text-center text-6xl">Coming</p>
+            }
         </>
     );
 };

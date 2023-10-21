@@ -11,7 +11,8 @@ const ProductsCard = ({ product }) => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="text-title-primary text-2xl md:text-3xl font-bold font-londrina">{title}</h2>
-                <p>{details.slice(0, 100)}...</p>
+                {/* <p>{details.slice(0, 100)}...</p> */}
+                <p className="text-2xl text-title-primary">{brandName}</p>
                 <div className="flex justify-between text-sm w-full">
                     <p>Rating: {rating}</p>
                     <p>Type: {type}</p>

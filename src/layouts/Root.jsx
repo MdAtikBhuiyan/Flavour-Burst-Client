@@ -17,7 +17,7 @@ const Root = () => {
 
             {/* toastify container */}
             <ToastContainer
-                position="top-center"
+                position="top-right"
                 autoClose={4000}
                 hideProgressBar={false}
                 newestOnTop={false}

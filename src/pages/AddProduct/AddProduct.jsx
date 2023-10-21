@@ -2,12 +2,20 @@
 import Swal from 'sweetalert2';
 import addImg from '../../assets/images/addproduct.png'
 import { useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const AddProduct = () => {
 
     const { state } = useLocation();
 
-    const { image, title, price, rating, details, type, brandName } = state ? state : '';
+    const [updateProduct, setUpdateProduct] = useState(null);
+
+    useEffect(() => {
+        setUpdateProduct(state)
+    }, [state])
+
+    const { _id, image, title, price, rating, details, type, brandName } = updateProduct ? updateProduct : '';
 
 
     const handleAddProduct = (e) => {
@@ -61,7 +69,7 @@ const AddProduct = () => {
         // form clear
         // form.reset()
     };
-    console.log(state);
+    console.log(updateProduct);
 
 
     // update product
@@ -78,8 +86,38 @@ const AddProduct = () => {
 
         const newProduct = { image, title, brandName, type, price, details, rating };
         // console.log(newProduct);
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: "PUT",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Update successfully',
+                        text: "Do you want to continue",
+                        confirmButtonText: "Yes"
+                        // showConfirmButton: false,
+                        // timer: 2000
+                    })
+                }
+            })
+            .catch(err => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Opps... Failed !!',
+                    text: `${err.message}`,
+                    confirmButtonText: "Continue"
+                    // showConfirmButton: false,
+                    // timer: 2000
+                })
+            })
 
-        
 
     }
 
@@ -91,17 +129,17 @@ const AddProduct = () => {
             </div> */}
 
             <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-2 items-center justify-center">
-                <div className={`justify-self-center ${state && 'order-2'}`}>
+                <div className={`justify-self-center ${updateProduct && 'order-2'}`}>
                     <img src={addImg} alt="" />
                 </div>
-                <section className={`p-4 md:py-20 md:px-16 shadow-md ${state ? 'bg-title-secondary' : 'bg-title-primary'}`}>
+                <section className={`p-4 md:py-20 md:px-16 shadow-md ${updateProduct ? 'bg-title-secondary' : 'bg-title-primary'}`}>
                     <h1 className="text-center text-3xl md:text-5xl font-semibold text-white font-londrina mb-14">
                         {
-                            state ? "Update Product" : 'Add New Product'
+                            updateProduct ? "Update Product" : 'Add New Product'
                         }
                     </h1>
 
-                    <form onSubmit={state ? handleUpdateProduct : handleAddProduct} className="">
+                    <form onSubmit={updateProduct ? handleUpdateProduct : handleAddProduct} className="">
                         <div>
                             <label className="text-white text-base font-bold">
                                 Image URL:
@@ -197,7 +235,15 @@ const AddProduct = () => {
                         </div>
 
                         <div className="w-full mt-12">
-                            <button type="submit" className={`btn w-full text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base ${state ? 'bg-title-primary hover:bg-[#ff6ed3]' : 'bg-title-secondary hover:bg-[#6e53e6]'}`}>Get Started</button>
+                            <button
+                                type="submit"
+                                className={`btn w-full text-white rounded-full border-0 h-auto px-8 py-3 font-bold text-base ${updateProduct ? 'bg-title-primary hover:bg-[#ff6ed3]' : 'bg-title-secondary hover:bg-[#6e53e6]'}`}>
+                                {updateProduct ?
+                                    "Update Product"
+                                    :
+                                    "Add Product"
+                                }
+                            </button>
                         </div>
                     </form>
                 </section>

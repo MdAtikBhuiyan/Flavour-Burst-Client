@@ -11,7 +11,7 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
 
     const userId = user?.uid;
-    console.log(user, userId);
+    // console.log(user, userId);
     const navLinks = <>
 
         <li>

@@ -75,7 +75,7 @@ const BrandProducts = ({ params }) => {
     // console.log(brandName);
 
     const products = useLoaderData()
-    console.log(products);
+    // console.log(products);
 
 
     return (
@@ -83,7 +83,7 @@ const BrandProducts = ({ params }) => {
             <Banner banners={state?.banner} />
 
             {
-                products.length ?
+                products ?
                     <AllProducts products={products} />
                     :
                     <div className="text-center text-3xl font-bold mt-8">

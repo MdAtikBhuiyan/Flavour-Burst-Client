@@ -8,14 +8,17 @@ import { toast } from "react-toastify";
 const ProductDetails = () => {
 
     const product = useLoaderData();
-    const { _id, image, title, price, rating, details, type, brandName } = product;
+    const { _id, ...restInfo } = product;
 
+    const { image, title, price, rating, details, type, brandName } = restInfo;
     const { user } = useContext(AuthContext);
 
+    // console.log(restInfo);
     // console.log(user, user.uid);
+
     const handleAddToCart = () => {
 
-        const addProduct = { ...product, uid: user?.uid }
+        const addProduct = { ...restInfo, uid: user?.uid }
         fetch('http://localhost:5000/addCart', {
             method: "POST",
             headers: {
