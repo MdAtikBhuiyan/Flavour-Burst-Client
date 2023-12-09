@@ -8,6 +8,9 @@
 https://asn-flavour-burst-10.web.app/
 
 
+## Server side code Link
+https://github.com/MdAtikBhuiyan/Flavour-Burst-Server
+
 ## Key Features:
 
 - Flavour Burst is a sports food brands based website
@@ -20,3 +23,12 @@ https://asn-flavour-burst-10.web.app/
 - user can see product details and add to cart
 - User can also login by using google and email , password.
 - there has some validation of password for more
+
+
+## Technology Used:
+- Firebase authentication
+- React JS
+- Node JS
+- Express JS
+- Mongo DB
+- Tailwind
